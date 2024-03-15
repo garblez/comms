@@ -25,7 +25,7 @@ func (m Message) String() string {
 }
 
 func Transmit(message Message, recipient user.User) {
-	conn, err := net.DialTCP("tcp", nil, &net.TCPAddr{Port: 8888})
+	conn, err := net.DialTCP("tcp", nil, &recipient.Address)
 	if err != nil { // <-- refuses to connect at this point here!
 		log.Println(err.Error())
 		return
@@ -37,5 +37,5 @@ func Transmit(message Message, recipient user.User) {
 	if err != nil {
 		log.Fatal(err.Error())
 	}
-	log.Println(string(bytes[:]), "(", n, ") bytes")
+	log.Printf("%s (%d) bytes\n", string(bytes[:]), n)
 }
