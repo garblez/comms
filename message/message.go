@@ -37,5 +37,5 @@ func Transmit(message Message, recipient user.User) {
 	if err != nil {
 		log.Fatal(err.Error())
 	}
-	log.Printf("%s (%d) bytes\n", string(bytes[:]), n)
+	log.Printf("%s (%d bytes)\n", string(bytes[:]), n)
 }
